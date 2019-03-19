@@ -36,10 +36,11 @@ int printstring(va_list str)
 	char *nu = "(null)";
 	char *string = va_arg(str, char*);
 
-	if (string == NULL)
+	if (!string)
 	{
-		write(1, nu, 6);
-		return (6);
+		for ( ; *(nu + a) ; a++)
+			_putchar(nu[a]);
+		return (a);
 	}
 	for (a = 0 ;  string[a] ; a++)
 		_putchar(string[a]);
