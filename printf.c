@@ -12,7 +12,7 @@
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i = 0, b = 0;
+	unsigned int i = 0, b = 0, c = 0;
 	char id, letter[] = {'c', 's', 'd', 'i'};
 
 	if (!format)
@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 					if (format[i + 1] == letter[b])
 					{
 						id = format[i + 1];
-						(*get_op_func(&id))(arguments);
+						c += (*get_op_func(&id))(arguments) - 2;
 						i += 1;
 					}
 					b++;
@@ -50,5 +50,5 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 	}
 	va_end(arguments);
-	return (i);
+	return (i + c);
 }
