@@ -19,7 +19,10 @@ int _putchar(char c)
  */
 int printchar(va_list str)
 {
-	_putchar(va_arg(str, int));
+	char string;
+
+	string = (char)va_arg(str, int);
+	_putchar(string);
 	return (1);
 }
 /**
@@ -30,8 +33,14 @@ int printchar(va_list str)
 int printstring(va_list str)
 {
 	int a = 0;
+	char *nu = "(null)";
 	char *string = va_arg(str, char*);
 
+	if (string == NULL)
+	{
+		write(1, nu, 6);
+		return (6);
+	}
 	for (a = 0 ;  string[a] ; a++)
 		_putchar(string[a]);
 	return (a);
