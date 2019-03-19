@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include "holberton.h"
+/**
+ * _printf - produces output according to a format.
+ * @format: Original string to print
+ * Return: an integer according to the length
+ * of the original string
+ */
+int _printf(const char *format, ...)
+{
+	va_list arguments;
+	unsigned int i = 0, b = 0;
+	char id, letter[] = {'c', 's', 'd', 'i'};
+
+	if (!format)
+		return (-1);
+	va_start(arguments, format);
+	for (i = 0; format[i]; i++)
+	{
+		if (i == 0 && format[i] == '%' && !format[i + 1])
+			return (-1);
+		if (format[i] == '%')
+		{
+			if (format[i + 1] == '%')
+			{
+				_putchar(format[i + 1]);
+				i += 1;
+			}
+			else if (format[i + 1] != '%')
+			{
+				b = 0;
+				while (b < 4)
+				{
+					if (format[i + 1] == letter[b])
+					{
+						id = format[i + 1];
+						(*get_op_func(&id))(arguments);
+						i += 1;
+					}
+					b++;
+				}
+			}
+			else
+				_putchar(format[i]);
+		}
+		else
+			_putchar(format[i]);
+	}
+	va_end(arguments);
+	return (i);
+}
