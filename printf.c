@@ -12,16 +12,14 @@
 int _printf(const char *format, ...)
 {
 	va_list arguments;
-	unsigned int i = 0, b = 0, c = 0;
+	unsigned int i = 0, b = 0, c = 0, f = 0;
 	char id, letter[] = {'c', 's', 'd', 'i'};
 
-	if (!format)
-		return (-1);
 	va_start(arguments, format);
-	for (i = 0; format[i]; i++)
+	if (format == NULL || (i == 0 && format[i] == '%' && !format[i + 1]))
+		return (-1);
+	for (i = 0; format[i] && format != NULL ; i++)
 	{
-		if (i == 0 && format[i] == '%' && !format[i + 1])
-			return (-1);
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '%')
@@ -31,16 +29,18 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] != '%')
 			{
-				b = 0;
-				while (b < 4)
+				b = 0, f = 0;
+				for ( ; b < 4 ; b++)
 				{
 					if (format[i + 1] == letter[b])
 					{
 						id = format[i + 1];
 						c += (*get_op_func(&id))(arguments) - 2;
 						i += 1;
+						f = 1;
 					}
-					b++;
+					else if (format[i + 1] != letter[b] && f == 0 && b == 3)
+						_putchar(format[i]);
 				}
 			}
 			else
