@@ -5,6 +5,7 @@ int _putchar(char c);
 int printchar(va_list str);
 int printstring(va_list str);
 int printdigit(va_list str);
+int recursive_pt(int num);
 int (*get_op_func(char *s))(va_list str);
 int _printf(const char *format, ...);
 /**
