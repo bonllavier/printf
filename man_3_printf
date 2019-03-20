@@ -1,0 +1,42 @@
+.TH PRINTF 1 "19 March 2019" "1.0" "User Commands"
+.SH NAME
+.B printf
+- Produce output according to a format, the function write output to stdout, the standard output stream.
+.SH SYNOPSIS
+printf FORMAT [ARGUMENT]...
+printf OPTION
+.SH DESCRIPTION
+Print ARGUMENT(s) according to FORMAT.
+The printf command (format printing) translates internal values into characters for sending to the standard output. The simplest form of this command echos back the text pattern it is passed.
+FORMAT controls the output as in C printf. Interpreted sequences are:
+A text pattern is an ordinary name with the addition of zero or more conversion patterns. Each conversion pattern begins with a percent symbol (%) and is followed by:
+.B Conversion characters for the printf command.
+c - prints a single character
+.PP
+s - prints out an item of type name
+.PP
+d - prints an integer
+.PP
+i - prints an integer
+.PP
+% - prints a percent sign %
+.B The cursor control sequences for the printf command.
+\\b - backspace
+.PP
+\\n - carriage return and newline
+.PP
+\\t - tab
+.PP
+\\v - newline
+.PP
+\\r - carriage return
+.PP
+\\\\ - \\
+.PP
+\\'' - '
+.SH SEE ALSO
+.printf(1)
+.SH BUGS
+A LOT.
+.SH AUTHOR
+Javier Bonilla Mite, Rodrigo Sierra Vargas
