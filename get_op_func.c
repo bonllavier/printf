@@ -17,9 +17,10 @@ int (*get_op_func(char *s))(va_list str)
 		{"i", printdigit},
 		{"b", print_binary},
 		{"R", printrot13},
+		{"r", printrev},
 		{NULL, NULL}
 	};
-	while (i < 6)
+	while (i < 7)
 	{
 		if (*s == *ops[i].op)
 			return (ops[i].f);
