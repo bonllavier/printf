@@ -81,3 +81,46 @@ int recursive_pt(int num)
 	count += _putchar(x % 10 + '0');
 	return (count);
 }
+/**
+ *print_binary - print binary of a decimal number
+ *@str: string
+ *Return: the number of elelemnts printed
+ */
+int print_binary(va_list str)
+{
+	int count;
+	unsigned int num;
+
+	count = 0;
+	num = va_arg(str, unsigned int);
+	count += printbinary(num);
+	return (count);
+}
+/**
+ * printbinary - prints the binary representation of a number.
+ * @n: given number in decimal to convert
+ * Return: the number of elements printed
+ */
+int printbinary(unsigned int n)
+{
+	int bit, bin = 0, count = 0;
+
+	for (bit = 31; bit >= 0; bit--)
+	{
+		bin = n >> bit & 1;
+		if (bin == 1)
+			break;
+		if (bit == 0 && bin == 0)
+		{
+			_putchar('0');
+			return (1);
+		}
+	}
+	for (; bit >= 0; bit--)
+	{
+		bin = n >> bit & 1;
+		_putchar(bin + '0');
+		count++;
+	}
+	return (count);
+}

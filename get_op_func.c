@@ -15,15 +15,14 @@ int (*get_op_func(char *s))(va_list str)
 		{"s", printstring},
 		{"d", printdigit},
 		{"i", printdigit},
+		{"b", print_binary},
 		{NULL, NULL}
 	};
-	while (i < 4)
+	while (i < 5)
 	{
 		if (*s == *ops[i].op)
 			return (ops[i].f);
 		i++;
 	}
-	printf("Error1\n");
-	exit(99);
 	return (NULL);
 }
