@@ -10,6 +10,7 @@ int (*get_op_func(char *s))(va_list str);
 int _printf(const char *format, ...);
 int print_binary(va_list str);
 int printrot13(va_list str);
+int printrev(va_list str);
 /**
  *struct op - structure
  *@op: character
