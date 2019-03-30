@@ -9,7 +9,6 @@ int recursive_pt(int num);
 int (*get_op_func(char *s))(va_list str);
 int _printf(const char *format, ...);
 int print_binary(va_list str);
-int printbinary(unsigned int n);
 /**
  *struct op - structure
  *@op: character
