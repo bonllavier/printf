@@ -1,15 +1,15 @@
 #include "holberton.h"
 #include <stdio.h>
-int _print_rev_recursion(char *s, int count);
+int _print_rev_recursion(char *s, int);
 /**
- * printrot13 - prints a string using rot13.
+ * printrev - prints a string in reverse.
  *
  * @str: given string to convert
  * Return: number of elements printed
  */
 int printrev(va_list str)
 {
-	int count = 0;
+	int count = 0, control = 0;
 	int a = 0;
 	char *nu = "(null)";
 	char *string = va_arg(str, char*);
@@ -20,21 +20,27 @@ int printrev(va_list str)
 			_putchar(nu[a]);
 		return (a);
 	}
-	count = _print_rev_recursion(string, count);
+	count = _print_rev_recursion(string, control);
 	return (count);
 }
 /**
  * _print_rev_recursion - prints a string in reverse.
  * @s: pointed string to reverse
- *
+ * @count: number characters
+ * Return: number of chars printed
  */
-int _print_rev_recursion(char *s, int count)
+int _print_rev_recursion(char *s, int control)
 {
-	if (*s != '\0')
+	while (*s != '\0')
 	{
-		count++;
-		_print_rev_recursion((s + 1), count);
-		_putchar(*s);
+		s++;
 	}
-	return(count);
+	s--;
+	while (*s != '\0')
+	{
+		_putchar(*s);
+		control++;
+		s--;
+	}
+	return (control);
 }
